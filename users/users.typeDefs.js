@@ -10,10 +10,23 @@ type User {
     avatarURL: String
     githubUsername: String
     createdAt: String!
-    updatedAt: String! 
-}
-
-type Query {
-    seeProfile(username: String!): User
+    updatedAt: String!
+    followers(page:Int): [User]
+    following(page:Int): [User]
 }
 `
+
+// how to use 
+// {
+//     seeUser(username:"user1"){
+//       id
+//       username
+//       followers(page:1){
+//         id
+//         username
+//       }
+//       following(page:2){
+//         id
+//         username
+//     }
+//   }
