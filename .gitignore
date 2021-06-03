@@ -116,6 +116,5 @@ dist
 .pnp.*
 
 # my list
-migrations/
 uploads/
 build/
