@@ -11,7 +11,7 @@ export default {
                     error: "The user does not exist."
                 };
             }
-            console.log(user);
+            (user);
             await client.user.update({
                 where:
                     {

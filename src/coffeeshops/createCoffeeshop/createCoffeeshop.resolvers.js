@@ -4,8 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 export default {
     Mutation:{
         createCoffeeShop: protectedResolver(
-            async(_,{name, urls:photoUrls, categories:categoryNames}, {loggedinUser}) => {
-                console.log(photoUrls, categoryNames);
+            async(_,{name, latitude, longitude, urls:photoUrls, categories:categoryNames}, {loggedinUser}) => {
                 let categoryNamesObj = [];
                 let photoUrlsObj = [];
                 if(categoryNames) {
@@ -24,10 +23,11 @@ export default {
                         })
                     });
                 }
-                console.log(categoryNamesObj, photoUrlsObj);
                 const coffeeShop = await client.coffeeShop.create({
                     data:{
                         name,
+                        latitude,
+                        longitude,
                         user: {
                             connect: {
                                 id: loggedinUser.id,

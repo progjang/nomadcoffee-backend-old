@@ -9,6 +9,8 @@ type CreateCoffeeShopResult{
 type Mutation{
     createCoffeeShop(
         name:String!
+        latitude: String
+        longitude: String
         urls: [String]
         categories: [String]
     ): CreateCoffeeShopResult

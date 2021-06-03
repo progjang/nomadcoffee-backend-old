@@ -9,7 +9,6 @@ export default {
             if(!user){
                 throw new Error("No user found")
             }
-            console.log(user);
 
             // password check
             const okPassword = await bcrypt.compare(password, user.password)

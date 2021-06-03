@@ -1,0 +1,44 @@
+[deploy]
+
+#1. src build
+
+$npm i @babel/cli --dev-only
+
+@package.json > "scripts"
+(1)"build": "babel src(빌드할폴더명) --out-dir build"
+$npm run build
+(2)"start": "node build/server"
+$npm run start
+실행 후 에러확인 -> ReferenceError: regeneratorRuntime is not defined 
+- async function을 사용하는 데 필요한 것
+- 아래와 같이 babel에 plugin으로 설치하고,
+$npm install --save-dev @babel/plugin-transform-runtime
+-설치한 plugin을 configure(@babel.config.json)
+{
+    "presets": ["@babel/preset-env"],
+    ▶"plugins": ["@babel/plugin-transform-runtime"]
+}
+-플러그인을 설치했으니,
+▶build 폴더를 삭제하고 다시 빌드
+$npm run build
+$npm start(or npm run start)
+
+▶서버 정상동작 하는 지 확인 (Playground 까지)
+▶.gitignore에 /build 추가 (빌드한 파일을 올릴 필요가 없으니까)
+
+
+#2. Heroku
+Heroku Git 사용하기
+홈페이지에서 Heroku CLI 설치내용을 확인 후, wsl2에 아래와 같이 설치
+$ curl https://cli-assets.heroku.com/install.sh | sh
+$ sudo npm install -g heroku
+
+$ heroku login
+-> 브라우저가 자동으로 열리지 않음. 혹은 너무 오래 걸림
+-> 터미널에서 직접 Ctrl+마우스 클릭해서 브라우저 열어야 했음
+$ heroku git:remote -a nomadcoffee-bk
+$ git remote -v 로 확인
+
+
+
+

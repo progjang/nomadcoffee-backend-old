@@ -25,7 +25,7 @@ export default {
             if(newPassword){
                 uglyPassword = await bcrypt.hash(newPassword,10);
             }
-            console.log(newPassword, uglyPassword);
+            (newPassword, uglyPassword);
             const user = await client.user.update({where:{id:loggedinUser.id}, data:{
                 username,
                 ...(uglyPassword && {password:uglyPassword}),

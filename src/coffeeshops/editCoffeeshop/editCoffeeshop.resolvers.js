@@ -4,8 +4,7 @@ import { protectedResolver } from "../../users/users.utils"
 export default {
     Mutation: {
         editCoffeeShop: protectedResolver(
-            async(_, {id, latitude, longitude, categories:newCategories},{loggedinUser}) => {
-                console.log(loggedinUser);
+            async(_, {id, name, latitude, longitude, categories:newCategories},{loggedinUser}) => {
             const oldShop = await client.coffeeShop.findFirst({
                 where:{
                     id,
@@ -32,12 +31,12 @@ export default {
                     create:{name}
                 }))
             }
-            console.log(newCategoriesObj);
             const shop = await client.coffeeShop.update({
                 where: {
                     id,
                 },
                 data: {
+                    name,
                     latitude,
                     longitude,
                     ...(newCategories.length > 0 && 
@@ -47,7 +46,6 @@ export default {
                         }})
                 }
             });
-            console.log(shop);
             return {
                 ok: true,
             }

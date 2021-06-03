@@ -24,7 +24,6 @@ export default {
                         location
                     }
                 });
-                console.log(user)
                 if(user){
                     return {
                         ok: true
@@ -32,7 +31,6 @@ export default {
                 }
 
             } catch(e){
-                console.log(e);
                 return {
                     ok: false,
                     error: `failed to create the user (${username}/${email})`
