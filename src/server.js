@@ -8,6 +8,8 @@ import {getUser} from "./users/users.utils";
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    playground: true,
+    introspection: true,
     context: async({req}) => {
         return {         
             loggedinUser: await getUser(req.headers.token)

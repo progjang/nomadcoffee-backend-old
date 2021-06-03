@@ -45,6 +45,23 @@ $ git push heroku master
 
 브라우저에 Application error 메세지(정상임)
 
+package.json 에서 모듈 정리하고, 
+(*** @prisma/client 모듈에서 계속 에러가 나서 고생함, dependency 맨 위에 올리고 해결 devDependency 삭제)
+$npm i -> package.json.lock 수정됨
+git add .
+git commit ...
+git push heroku master
+
+/graphql 하면 GET query missing. => 헤로쿠 환경변수가 아래와 같기 때문
+process.env.NODE_ENV === "production"
+
+server.js ApolloServer()에서 
+playground: true,
+introspection: true, 로 설정하고 
+git add .
+git commit ...
+git push heroku master
+
 
 
 
