@@ -38,6 +38,12 @@ $ heroku login
 -> 터미널에서 직접 Ctrl+마우스 클릭해서 브라우저 열어야 했음
 $ heroku git:remote -a nomadcoffee-bk
 $ git remote -v 로 확인
+$ git add .
+$ git commit -m "..."
+$ git push heroku master
+=> build script 를 헤로쿠가 실행하게 됨
+
+브라우저에 Application error 메세지(정상임)
 
 
 
