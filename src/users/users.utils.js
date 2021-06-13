@@ -24,11 +24,18 @@ export const protectedResolver = (ourResolver) => (
     context,
     info
 ) => {
+    console.log(context, info);
     if (!context.loggedinUser) {
-        return {
-            ok:false,
-            error: "please log in to perform this acton",
-        };
+        const query = info.operation.operation === "query";
+        if(query){
+            return null;
+        } else{
+            return {
+                ok:false,
+                error: "please log in to perform this acton",
+            };
+        }
+
     }
     return ourResolver(root, args, context, info);
 }
